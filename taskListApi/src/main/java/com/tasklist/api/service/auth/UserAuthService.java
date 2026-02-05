@@ -2,12 +2,14 @@ package com.tasklist.api.service.auth;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Optional;
 
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
 import org.springframework.stereotype.Service;
 
 import com.tasklist.api.dto.UserLoginRequestDto;
@@ -42,6 +44,21 @@ public class UserAuthService implements UserDetailsService {
             throw new BadCredentialsException("INVALID_CREDENCIALS");
         }
         response.put("token", jwtUtil.generateToken(taskUser));
+        return response;
+
+    }
+
+    public Map<String, String> oAuth2Login(OAuth2AuthenticationToken auth2Token) {
+        Map<String, String> response = new HashMap<>();
+
+        String email = auth2Token.getPrincipal().getAttribute("email");
+        String name = auth2Token.getPrincipal().getAttribute("name");
+        TaskUser user = taskUserRepository.findByEmail(email).orElse(null);
+        if (user == null) {
+            user = new TaskUser(null, email, null, name, null);
+            taskUserRepository.save(user);
+        }
+        response.put("token", jwtUtil.generateToken(user));
         return response;
 
     }

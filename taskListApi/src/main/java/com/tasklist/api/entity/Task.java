@@ -1,10 +1,11 @@
 package com.tasklist.api.entity;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+
+import com.tasklist.api.dto.TaskResponseDto;
 
 @Document(collection = "task")
 public class Task {
@@ -14,14 +15,20 @@ public class Task {
     private String taskDescription;
     private TaskStatus taskStatus;
     private LocalDateTime createdAt;
-    List<String> userId;
+    String userId;
 
-    public Task(String id, String taskTitle, String taskDescription, TaskStatus taskStatus, LocalDateTime createdAt) {
+    public Task(String id, String taskTitle, String taskDescription, TaskStatus taskStatus, LocalDateTime createdAt,
+            String userId) {
         this.id = id;
         this.taskTitle = taskTitle;
         this.taskDescription = taskDescription;
         this.taskStatus = taskStatus;
         this.createdAt = createdAt;
+        this.userId = userId;
+    }
+
+    public TaskResponseDto toDto() {
+        return new TaskResponseDto(id, taskTitle, taskDescription, taskStatus, createdAt, userId);
     }
 
     public String getId() {
@@ -62,6 +69,14 @@ public class Task {
 
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
 }

@@ -1,10 +1,14 @@
 package com.tasklist.api.security.jwt;
 
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.crypto.SecretKey;
+
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -17,34 +21,49 @@ import io.jsonwebtoken.security.Keys;
 
 @Component
 public class JwtUtil {
-    private static final Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
+
+    @Value("${jwt.secret}")
+    private String secret;
+
     private static final long EXPIRATION_TIME = 5 * 60 * 60L;
+
+    private SecretKey getSecretKey() {
+        return Keys.hmacShaKeyFor(secret.getBytes(StandardCharsets.UTF_8));
+    }
 
     public String generateToken(TaskUser user) {
         Map<String, Object> claims = new HashMap<>();
         claims.put("id", user.getId());
         claims.put("username", user.getUsername());
         claims.put("email", user.getEmail());
-        return doGenerateToken(claims, user.getEmail());
 
+        return Jwts.builder()
+                .claims(claims)
+                .subject(user.getEmail())
+                .issuedAt(new Date(System.currentTimeMillis()))
+                .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME * 1000))
+                .signWith(getSecretKey(), SignatureAlgorithm.HS256)
+                .compact();
     }
 
     public boolean validateToken(String token) {
         try {
-            Jwts.parser().setSigningKey(key).build().parseClaimsJws(token);
+            Jwts.parser()
+                    .verifyWith(getSecretKey())
+                    .build()
+                    .parseSignedClaims(token);
             return true;
-        } catch (JwtException e) {
+        } catch (Exception e) {
             return false;
         }
     }
 
     public String extractUsername(String token) {
-        return Jwts.parser().setSigningKey(key).build().parseClaimsJws(token).getBody().getSubject();
-    }
-
-    public String doGenerateToken(Map<String, Object> claims, String subject) {
-        return Jwts.builder().issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME * 1000)).signWith(key).claims(claims)
-                .subject(subject).compact();
+        return Jwts.parser()
+                .verifyWith(getSecretKey())
+                .build()
+                .parseSignedClaims(token)
+                .getPayload()
+                .getSubject();
     }
 }

@@ -1,6 +1,7 @@
 package com.tasklist.api.entity;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.jspecify.annotations.Nullable;
@@ -58,8 +59,7 @@ public class TaskUser implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getAuthorities'");
+        return Collections.emptyList();
     }
 
     @Override
@@ -80,4 +80,23 @@ public class TaskUser implements UserDetails {
         this.taskId = taskId;
     }
 
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
+    }
+
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
+    }
+
+    @Override
+    public boolean isEnabled() {
+        return true;
+    }
 }
