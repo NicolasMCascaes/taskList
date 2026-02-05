@@ -44,13 +44,13 @@ public class TaskController {
         return ResponseEntity.ok().build();
     }
 
-    @PatchMapping("/cancel")
+    @PatchMapping("/cancel/{taskId}")
     public ResponseEntity<Void> cancelTask(@PathVariable String taskId) {
         taskService.cancelTask(taskId);
         return ResponseEntity.ok().build();
     }
 
-    @PatchMapping("/complete")
+    @PatchMapping("/complete/{taskId}")
     public ResponseEntity<Void> completeTask(@PathVariable String taskId) {
         taskService.completeTask(taskId);
         return ResponseEntity.ok().build();

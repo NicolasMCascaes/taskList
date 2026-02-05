@@ -1,10 +1,7 @@
 package com.tasklist.api.dto;
 
-import java.time.LocalDateTime;
+import jakarta.validation.constraints.NotBlank;
 
-import com.tasklist.api.entity.Task;
-import com.tasklist.api.entity.TaskStatus;
-
-public record TaskRequestDto(String taskTitle, String taskDescription,
-        String userId) {
+public record TaskRequestDto(@NotBlank(message = "Task title is mandatory") String taskTitle, String taskDescription,
+                @NotBlank(message = "UserId can not be blank") String userId) {
 }

@@ -2,7 +2,6 @@ package com.tasklist.api.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.crypto.argon2.Argon2PasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,7 +30,6 @@ public class SecurityConfiguration {
                 .oauth2Login(oauth2 -> oauth2.defaultSuccessUrl("/api/v1/oauth2/success"))
                 .exceptionHandling(exception -> exception
                         .authenticationEntryPoint((request, response, authException) -> {
-                            // Retorna 401 em vez de redirecionar
                             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
                             response.setContentType("application/json");
                             response.getWriter().write("{\"error\":\"Unauthorized or invalid token\"}");

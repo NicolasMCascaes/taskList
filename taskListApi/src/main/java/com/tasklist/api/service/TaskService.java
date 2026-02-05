@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.tasklist.api.dto.TaskRequestDto;
 import com.tasklist.api.dto.TaskResponseDto;
@@ -14,6 +15,7 @@ import com.tasklist.api.repository.TaskRepository;
 import com.tasklist.api.repository.TaskUserRepository;
 
 @Service
+@Transactional
 public class TaskService {
     private final TaskRepository taskRepository;
     private final TaskUserRepository taskUserRepository;
@@ -35,11 +37,14 @@ public class TaskService {
     public void cancelTask(String taskId) {
         Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("TASK_NOT_FOUND"));
         task.setTaskStatus(TaskStatus.CANCELED);
+        taskRepository.save(task);
+
     }
 
     public void completeTask(String taskId) {
         Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("TASK_NOT_FOUND"));
         task.setTaskStatus(TaskStatus.COMPLETED);
+        taskRepository.save(task);
     }
 
     public List<TaskResponseDto> listAllByTaskStatus(TaskStatus taskStatus, String userId) {
