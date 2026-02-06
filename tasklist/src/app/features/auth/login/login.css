@@ -1,0 +1,78 @@
+h1{
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(255, 251, 0);
+  text-align: center;
+}
+.primary-buttons{
+  display: flex;
+  justify-content: space-between;
+}
+.primary-buttons button{
+  border: none;
+  padding: 8px;
+  width: 70px;
+  height: 6vh;
+  border-radius: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.primary-buttons button:hover{
+  background-color: #e9fa56;
+  transform: scale(1.1);
+}
+.login-container{
+  background: #000000;
+  background: linear-gradient(90deg,rgba(0, 0, 0, 1) 0%, rgb(93, 94, 34) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 25px;
+}
+.login-form{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  background-color: rgba(3, 3, 3, 0.9);
+  padding: 30px;
+  gap: 5px;
+  width: 70vh;
+  height: 70vh;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  box-shadow: inset;
+  -webkit-box-shadow: 5px 5px 15px 5px #000000;
+box-shadow: 5px 5px 15px 5px #000000;
+
+}
+
+input{
+  border: none;
+  padding: 8px;
+  border-bottom: 1px solid silver;
+  background-color: transparent;
+  outline: none;
+  transition: transform 0.2s ease-in-out;
+  color: white;
+}
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0px 1000px rgb(3, 3, 3) inset !important;
+  -webkit-text-fill-color: aliceblue !important;
+}
+input:hover{
+  transform: scale(1.1);
+}
+::placeholder{
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: medium;
+}
+.register-links {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+
+}
+
+.register-links p {
+  margin: 0; /* remove a margem padrão */
+}
+
