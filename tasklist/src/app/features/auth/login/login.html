@@ -5,16 +5,23 @@
       <h1>Task List</h1>
       <h1>Login</h1>
     </div>
-    <input type="text" placeholder="Email">
-    <input type="password" placeholder="Senha">
+    <form action="" (submit)="handleLogin($event)">
+    <div class="form-group mb-3 gap-sm-4 d-flex flex-column">
+        <input type="email" name="email" required="true" class="form-control mb-3 bg-transparent text-white border-0 border-bottom rounded-bottom-0" [(ngModel)] = "email" placeholder="Email">
+        <input type="password" name="senha" required="true" class="form-control mb-3 bg-transparent text-white border-0 border-bottom rounded-bottom-0" [(ngModel)] = "senha" placeholder="Senha">
+      </div>
      <div class="primary-buttons">
-        <button class="btn btn-light mt-3">Login</button>
+        <div class="d-flex flex-column gap-3">
+        <button type="submit" class="btn btn-light mt-3">Login</button>
+        <p class="m-0">Ou</p>
+        <a routerLink="/login"><img src="google.svg" alt="" width="35px"></a>
+        </div>
       <div class="register-links">
         <p>Ainda não tem uma conta?</p>
-        <a href="">Registre-se agora!</a>
+        <a routerLink="/register">Registre-se agora!</a>
       </div>
     </div>
+    </form>
   </div>
-
   </div>
 

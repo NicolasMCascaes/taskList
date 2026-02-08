@@ -6,6 +6,7 @@ h1{
 .primary-buttons{
   display: flex;
   justify-content: space-between;
+  margin:0
 }
 .primary-buttons button{
   border: none;
@@ -17,7 +18,7 @@ h1{
 }
 .primary-buttons button:hover{
   background-color: #e9fa56;
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 .login-container{
   background: #000000;
@@ -28,6 +29,10 @@ h1{
   height: 100vh;
   padding: 25px;
 }
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
 .login-form{
   display: flex;
   justify-content: space-between;
@@ -35,8 +40,8 @@ h1{
   background-color: rgba(3, 3, 3, 0.9);
   padding: 30px;
   gap: 5px;
-  width: 70vh;
-  height: 70vh;
+  width: 80vh;
+  height: 80vh;
   border-radius: 10px;
   backdrop-filter: blur(10px);
   box-shadow: inset;
@@ -55,15 +60,16 @@ input{
   color: white;
 }
 input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0px 1000px rgb(3, 3, 3) inset !important;
+  -webkit-box-shadow: 0 0 0px 1000px rgba(3, 3, 3, 1) inset !important;
   -webkit-text-fill-color: aliceblue !important;
 }
 input:hover{
-  transform: scale(1.1);
+  transform: scale(1.05);
 }
 ::placeholder{
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: medium;
+    color: white;
 }
 .register-links {
   display: flex;
@@ -73,6 +79,6 @@ input:hover{
 }
 
 .register-links p {
-  margin: 0; /* remove a margem padrão */
+  margin: 0;
 }
 

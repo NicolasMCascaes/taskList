@@ -1,0 +1,32 @@
+.register-container {
+  background: linear-gradient(90deg, rgba(0, 0, 0, 1) 0%, rgb(93, 94, 34) 100%);
+  padding: 25px;
+}
+
+.register-form {
+  background-color: rgba(3, 3, 3, 0.9);
+  width: 70vh;
+  height: auto;
+  backdrop-filter: blur(10px);
+  box-shadow: 5px 5px 15px 5px #000000;
+}
+
+input::placeholder {
+  color: rgba(255, 255, 255, 0.8);
+}
+.form-group input {
+  transition: transform 0.2s ease-in-out;
+}
+.form-group input:hover {
+  transform: scale(1.1);
+}
+input:focus {
+  outline: none;
+  box-shadow: none;
+}
+.primary-buttons button:hover {
+ transform: scale(1.05);
+}
+.primary-buttons button {
+  transition: transform 0.2s ease-in-out;
+}

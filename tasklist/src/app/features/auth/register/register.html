@@ -1,0 +1,27 @@
+<div class="register-container d-flex align-items-center justify-content-center vh-100">
+
+  <div class="register-form p-4 rounded shadow-lg text-center">
+    <div class="title mb-lg-4">
+      <h1 class="text-warning">Task List</h1>
+      <h1 class="text-warning">Register</h1>
+    </div>
+
+    <form (submit)="handleRegister($event)">
+      <div class="form-group mb-3 gap-sm-4 d-flex flex-column">
+        <input type="email" name="email" required="true" class="form-control mb-3 bg-transparent text-white border-0 border-bottom rounded-bottom-0" [(ngModel)] = "email" placeholder="Email">
+        <input type="password" name="senha" required="true" class="form-control mb-3 bg-transparent text-white border-0 border-bottom rounded-bottom-0" [(ngModel)] = "senha" placeholder="Senha">
+        <input type="text" required="true" name="username" class="form-control mb-3 bg-transparent text-white border-0 border-bottom rounded-bottom-0" [(ngModel)] = "username" placeholder="Username">
+      </div>
+
+      <div class="primary-buttons mt-4">
+        <button type="submit" class="btn btn-light w-100">Registrar-se!</button>
+
+        <div class="register-links mt-3">
+          <p class="text-light mb-1">Já tem uma conta?</p>
+          <a routerLink="/login" class="text-warning text-decoration-none">Faça login aqui!</a>
+        </div>
+      </div>
+    </form>
+  </div>
+
+</div>
