@@ -4,7 +4,7 @@
     <li class="breadcrumb-item active" aria-current="page">{{status.toUpperCase()}}</li>
   </ol>
 </nav>
-<div class="vh-100 d-flex flex-grow-1 flex-row flex-wrap bg-secondary">
+<div class=" d-flex flex-grow-1 flex-row flex-wrap bg-secondary">
   @if(isLoading){
     <p>Carregando tasks...</p>
   }@else if (tasks.length === 0) {

@@ -1,8 +1,10 @@
 <div class="d-flex vh-100 w-100">
   <app-sidebar></app-sidebar>
-  <div class="w-100 d-flex flex-column overflow-hidden">
+  <div class="w-100 d-flex flex-column">
     <app-header></app-header>
-    <router-outlet></router-outlet>
+     <main class="flex-grow-1 overflow-auto">
+      <router-outlet></router-outlet>
+    </main>
   </div>
 </div>
 
