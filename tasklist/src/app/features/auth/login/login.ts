@@ -28,7 +28,8 @@ async handleLogin(event: Event){
   }
   event.preventDefault()
   this.authService.loginUser(loginData).subscribe({
-    next:() => {
+    next:(response) => {
+      this.authService.setToken(response.token)
       iziToast.success({
         title:"Sucesso!",
         message:"Login efetuado com sucesso!",

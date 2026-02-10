@@ -1,1 +1,19 @@
-<p>sidebar works!</p>
+<div class="bg-black vh-100 p-3">
+<div class="text-center">
+<i class="bi bi-list-check text-warning fs-1"></i>
+</div>
+<ul class="list-unstyled d-flex flex-column gap-lg-5 p-2 ">
+  <button routerLink="/dashboard" class="btn btn-outline-secondary border-0 rounded p-1">
+  Painel
+</button>
+<button routerLink="/tasks/completed" class="btn btn-outline-success border-0 rounded p-1">
+  <i class="bi bi-check-lg fs-4 m-2"></i>Concluídas
+</button>
+<button routerLink="/tasks/pending" class=" btn btn-outline-warning border-0 rounded p-1">
+ <i class="bi bi-clock-fill text-white fs-4 m-2"></i>Pendentes
+</button>
+<button routerLink="/tasks/cancelled" class="btn btn-outline-danger border-0 rounded p-1">
+ <i class="bi bi-x-lg fs-4 m-2"></i> Canceladas
+</button>
+</ul>
+</div>

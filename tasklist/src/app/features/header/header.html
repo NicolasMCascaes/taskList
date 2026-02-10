@@ -1,1 +1,43 @@
-<p>header works!</p>
+<header class="h-100 p-2 w-100 bg-dark d-flex flex-row justify-content-between align-items-center">
+  <div class="d-flex flex-row gap-2 align-items-center">
+    <button class="bg-transparent border-0 p-0" type="button" aria-label="Abrir menu">
+      <i class="bi-list text-white fs-2"></i>
+    </button>
+    <button
+      class="btn btn-secondary"
+      type="button"
+      data-bs-toggle="modal"
+      data-bs-target="#addTaskModal">
+      Criar tarefa
+    </button>
+  </div>
+
+  <button (click)="handleLogout()" class="btn btn-danger btn-sm" type="button">Logout</button>
+
+  <div class="modal fade" id="addTaskModal" tabindex="-1" aria-labelledby="addTaskModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content bg-dark text-white border-secondary">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addTaskModalLabel">Adicionar tarefa</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="addTaskForm" (submit)="handleSubmitTask($event)">
+            <div class="mb-3">
+              <label for="taskTitle" class="form-label">Título</label>
+              <input id="taskTitle" [(ngModel)] = "taskTitle" name="taskTitle" type="text" class="form-control bg-dark text-white border-secondary" placeholder="Ex.: Estudar Angular">
+            </div>
+            <div class="mb-3">
+              <label for="taskDescription" class="form-label">Descrição</label>
+              <textarea id="taskDescription" [(ngModel)] = "taskDescription" name="taskDescription" class="form-control bg-dark text-white border-secondary" rows="3" placeholder="Detalhes da tarefa"></textarea>
+            </div>
+          </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-light" data-bs-dismiss="modal">Cancelar</button>
+            <button type="submit" class="btn btn-primary" form="addTaskForm">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>

@@ -1,0 +1,25 @@
+<nav aria-label="breadcrumb" class="bg-secondary p-1">
+  <ol class="breadcrumb m-0 border-0">
+    <li class="breadcrumb-item">Tasks</li>
+    <li class="breadcrumb-item active" aria-current="page">{{status.toUpperCase()}}</li>
+  </ol>
+</nav>
+<div class="vh-100 d-flex flex-grow-1 flex-row flex-wrap bg-secondary">
+  @if(isLoading){
+    <p>Carregando tasks...</p>
+  }@else if (tasks.length === 0) {
+    <p>Nenhuma task encontrada</p>
+  }@else {
+    @for (task of tasks; track task.taskId) {
+      <app-task-card
+        [taskId]="task.taskId"
+        [status]="task.status"
+        [title]="task.taskTitle"
+        [description]="task.taskDescription"
+        (complete)="completeTask($event)"
+        (cancel)="cancelTask($event)">
+      </app-task-card>
+    }
+  }
+</div>
+

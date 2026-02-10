@@ -1,0 +1,17 @@
+<div class="card m-2" style="width: 15rem;">
+  <div [ngClass]="getStatusColor()" class="d-flex align-items-center justify-content-center rounded" style="height: 200px;">
+    <i [ngClass]="getStatusIcon()"></i>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{title}}</h5>
+    <p class="card-text">{{description}}</p>
+    <div class="d-flex gap-2">
+      <button class="btn btn-success" type="button" (click)="onComplete()" [disabled]="!canChangeStatus()">
+        Concluir
+      </button>
+      <button class="btn btn-outline-danger" type="button" (click)="onCancel()" [disabled]="!canChangeStatus()">
+        Cancelar
+      </button>
+    </div>
+  </div>
+</div>

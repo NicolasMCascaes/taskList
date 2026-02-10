@@ -36,7 +36,7 @@ public class TaskService {
 
     public void cancelTask(String taskId) {
         Task task = taskRepository.findById(taskId).orElseThrow(() -> new ResourceNotFoundException("TASK_NOT_FOUND"));
-        task.setTaskStatus(TaskStatus.CANCELED);
+        task.setTaskStatus(TaskStatus.CANCELLED);
         taskRepository.save(task);
 
     }
