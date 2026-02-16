@@ -4,6 +4,7 @@ import { AuthService } from '../../core/services/auth-service';
 import { TaskService } from '../../core/services/task-service';
 import iziToast from 'izitoast';
 import { FormsModule } from '@angular/forms';
+import { SidebarService } from '../../core/services/sidebar.service';
 
 @Component({
   selector: 'app-header',
@@ -15,10 +16,13 @@ export class Header {
   private authService: AuthService
   private router: Router
   private taskService: TaskService
+  private sideBarService: SidebarService
+
+   constructor(){this.authService = inject(AuthService), this.router = inject(Router), this.taskService = inject(TaskService), this.sideBarService = inject(SidebarService)}
   taskTitle: string = ''
   taskDescription: string = ''
   userId: string = ''
-  constructor(){this.authService = inject(AuthService), this.router = inject(Router), this.taskService = inject(TaskService)}
+
   handleLogout(){
     this.authService.removeToken();
     this.router.navigate(['/login'])
@@ -48,5 +52,9 @@ export class Header {
       })
     })
 
+  }
+
+  toogleSideBar(){
+    this.sideBarService.toogleSideBar()
   }
 }

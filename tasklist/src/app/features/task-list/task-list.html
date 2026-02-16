@@ -1,10 +1,10 @@
 <nav aria-label="breadcrumb" class="bg-secondary p-1">
   <ol class="breadcrumb m-0 border-0">
     <li class="breadcrumb-item">Tasks</li>
-    <li class="breadcrumb-item active" aria-current="page">{{status.toUpperCase()}}</li>
+    <li class="breadcrumb-item active text-muted" aria-current="page">{{status.toUpperCase()}}</li>
   </ol>
 </nav>
-<div class=" d-flex flex-grow-1 flex-row flex-wrap bg-secondary">
+<div class=" min-vh-100 d-flex flex-grow-1 flex-row flex-wrap bg-secondary m-1 rounded">
   @if(isLoading){
     <p>Carregando tasks...</p>
   }@else if (tasks.length === 0) {

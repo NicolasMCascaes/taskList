@@ -1,19 +1,19 @@
-<div class="bg-black vh-100 p-3">
+<div [class.sidebar-expanded] = 'isExpanded' [class.sidebar-collapsed]="!isExpanded" class=" sidebar bg-black vh-100 p-3">
 <div class="text-center">
 <i class="bi bi-list-check text-warning fs-1"></i>
 </div>
-<ul class="list-unstyled d-flex flex-column gap-lg-5 p-2 ">
+<ul class="list-unstyled d-flex flex-column justify-content-center align-items-center gap-lg-5 p-2 ">
   <button routerLink="/dashboard" class="btn btn-outline-secondary border-0 rounded p-1">
-  Painel
+  <i class="bi bi-speedometer2 fs-4"></i><span>Painel</span>
 </button>
 <button routerLink="/tasks/completed" class="btn btn-outline-success border-0 rounded p-1">
-  <i class="bi bi-check-lg fs-4 m-2"></i>Concluídas
+  <i class="bi bi-check-lg fs-4 m-2"></i><span>Concluídas</span>
 </button>
 <button routerLink="/tasks/pending" class=" btn btn-outline-warning border-0 rounded p-1">
- <i class="bi bi-clock-fill text-white fs-4 m-2"></i>Pendentes
+ <i class="bi bi-clock-fill text-white fs-4 m-2"></i><span>Pendentes</span>
 </button>
 <button routerLink="/tasks/cancelled" class="btn btn-outline-danger border-0 rounded p-1">
- <i class="bi bi-x-lg fs-4 m-2"></i> Canceladas
+ <i class="bi bi-x-lg fs-4 m-2"></i> <span>Canceladas</span>
 </button>
 </ul>
 </div>
