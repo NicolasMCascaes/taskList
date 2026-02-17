@@ -11,7 +11,7 @@
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-7952B3?logo=bootstrap&logoColor=white)
 ![Maven](https://img.shields.io/badge/Build-Maven-C71A36?logo=apachemaven&logoColor=white)
 
-Aplicacao full stack para gerenciamento de tarefas com autenticacao JWT/OAuth2, API REST em Spring Boot e frontend em Angular.
+Aplicação full stack para gerenciamento de tarefas com autenticação JWT/OAuth2, API REST em Spring Boot e frontend em Angular.
 
 ## Sumario
 
@@ -33,34 +33,34 @@ O projeto e dividido em dois aplicativos:
 
 Fluxo principal:
 
-1. Usuario se registra ou faz login.
+1. Usuário se registra ou faz login.
 2. API retorna JWT.
-3. Frontend salva token e envia `Authorization: Bearer <token>` nas requisicoes.
-4. Usuario cria, lista e atualiza status das tarefas.
+3. Frontend salva token e envia `Authorization: Bearer <token>` nas requisições.
+4. Usuário cria, lista e atualiza status das tarefas.
 5. Dashboard mostra grafico com contagem de tarefas por status.
 
 ## Arquitetura
 
 - Backend:
   - Spring Boot Web + Security
-  - MongoDB para persistencia
-  - JWT para autenticacao stateless
+  - MongoDB para persistência
+  - JWT para autenticação stateless
   - OAuth2 Google para login social
 - Frontend:
   - Angular (standalone components)
   - HttpClient + interceptor para JWT
-  - Chart.js para visualizacao do resumo de tarefas
+  - Chart.js para visualização do resumo de tarefas
   - Bootstrap para UI
 
 ## Funcionalidades
 
-- Cadastro de usuario
+- Cadastro de usuário
 - Login com email/senha
 - Login com Google (OAuth2)
-- Criacao de tarefas
+- Criação de tarefas
 - Listagem por status (`PENDING`, `COMPLETED`, `CANCELLED`)
-- Atualizacao de status (cancelar/concluir)
-- Dashboard com grafico dinamico de tarefas por status
+- Atualização de status (cancelar/concluir)
+- Dashboard com gráfico dinâmico de tarefas por status
 
 ## Estrutura do repositorio
 
@@ -73,7 +73,7 @@ TaskList/
 
 ## API (Backend)
 
-Diretorio: `taskListApi`
+Diretório: `taskListApi`
 
 ### Stack
 
@@ -85,14 +85,14 @@ Diretorio: `taskListApi`
 - OAuth2 Client (Google)
 - Maven Wrapper (`mvnw`, `mvnw.cmd`)
 
-### Pre-requisitos
+### Pré-requisitos
 
 - JDK 21
 - MongoDB local em `localhost:27017`
 
-### Configuracao
+### Configuração
 
-Arquivo ativo por padrao:
+Arquivo ativo por padrão:
 
 - `taskListApi/src/main/resources/application.properties`
 
@@ -118,9 +118,9 @@ API base URL:
 
 - `http://localhost:8080/api/v1`
 
-### Seguranca
+### Segurança
 
-Publico (sem token):
+Público (sem token):
 
 - `POST /api/v1/auth/login`
 - `POST /api/v1/auth/register`
@@ -199,7 +199,7 @@ Resposta esperada de `countTasks`:
 
 ## Frontend
 
-Diretorio: `tasklist`
+Diretório: `tasklist`
 
 ### Stack
 
@@ -210,12 +210,12 @@ Diretorio: `tasklist`
 - Chart.js 4
 - jwt-decode
 
-### Pre-requisitos
+### Pré-requisitos
 
 - Node.js 20+
 - npm 10+
 
-### Instalar dependencias
+### Instalar dependências
 
 Dentro de `tasklist`:
 
@@ -241,14 +241,14 @@ Frontend URL:
 - `/dashboard`
 - `/tasks/:status`
 
-### Integracao com API
+### Integração com API
 
 URLs configuradas no frontend:
 
 - `http://localhost:8080/api/v1/auth`
 - `http://localhost:8080/api/v1/tasks`
 
-O interceptor adiciona automaticamente o header `Authorization: Bearer <token>` quando ha token salvo.
+O interceptor adiciona automaticamente o header `Authorization: Bearer <token>` quando há token salvo.
 
 ## Como rodar localmente (full stack)
 
@@ -263,6 +263,6 @@ O interceptor adiciona automaticamente o header `Authorization: Bearer <token>` 
 
 ## Observacoes
 
-- O projeto usa OAuth2 com Google; para uso em outro ambiente, configure client ID/secret proprios.
-- Ha segredos no arquivo de configuracao de desenvolvimento; ideal mover para variaveis de ambiente.
-- Licenca nao definida no repositorio ate o momento.
+- O projeto usa OAuth2 com Google; para uso em outro ambiente, configure client ID/secret próprios.
+- Há segredos no arquivo de configuracao de desenvolvimento; ideal mover para variaveis de ambiente.
+- Licença nao definida no repositório ate o momento.
