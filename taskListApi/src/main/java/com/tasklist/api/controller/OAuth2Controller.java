@@ -1,9 +1,8 @@
 package com.tasklist.api.controller;
 
 import java.io.IOException;
-
-import org.springframework.http.ResponseEntity;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -14,6 +13,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @RestController
 @RequestMapping("/api/v1/oauth2")
+@CrossOrigin
 public class OAuth2Controller {
     private final UserAuthService userAuthService;
 
@@ -22,8 +22,9 @@ public class OAuth2Controller {
     }
 
     @GetMapping("/success")
-    public ResponseEntity<?> oAuth2Success(OAuth2AuthenticationToken token) {
-        return ResponseEntity.ok(userAuthService.oAuth2Login(token));
+    public void oAuth2Success(OAuth2AuthenticationToken token, HttpServletResponse response) throws IOException {
+        String jwt = userAuthService.oAuth2Login(token);
+        response.sendRedirect("http://localhost:4200/oauth2/redirect?token=" + jwt);
     }
 
     @GetMapping("/login")

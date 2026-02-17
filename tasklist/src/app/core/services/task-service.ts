@@ -22,4 +22,7 @@ export class TaskService {
    completeTask(taskId: string): Observable<any>{
      return this.http.patch(`${this.apiUrl}/complete/${taskId}`, {})
   }
+  countTaskByStatus(userId: string): Observable<Record<string, number>>{
+    return this.http.get<Record<string, number>>(`${this.apiUrl}/countTasks?userId=${userId}`)
+  }
 }

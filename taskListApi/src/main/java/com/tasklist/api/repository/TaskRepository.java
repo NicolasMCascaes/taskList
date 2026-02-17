@@ -9,6 +9,6 @@ import com.tasklist.api.entity.Task;
 import com.tasklist.api.entity.TaskStatus;
 
 @Repository
-public interface TaskRepository extends MongoRepository<Task, String> {
+public interface TaskRepository extends MongoRepository<Task, String>, TaskRepositoryCustom {
     List<Task> findAllByTaskStatusAndUserId(TaskStatus status, String userId);
 }

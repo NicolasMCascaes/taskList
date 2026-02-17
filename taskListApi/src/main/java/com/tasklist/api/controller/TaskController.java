@@ -9,6 +9,7 @@ import com.tasklist.api.entity.TaskStatus;
 import com.tasklist.api.service.TaskService;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -54,6 +55,11 @@ public class TaskController {
     public ResponseEntity<Void> completeTask(@PathVariable String taskId) {
         taskService.completeTask(taskId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/countTasks")
+    public ResponseEntity<Map<TaskStatus, Long>> countTasksByStatus(@RequestParam String userId) {
+        return ResponseEntity.ok(taskService.countTasksByStatus(userId));
     }
 
 }

@@ -15,7 +15,7 @@ interface JwtPayload {
 })
 
 export class AuthService {
-     private apiUrl = 'http://localhost:8080/api/v1/auth';
+     private apiUrl = 'http://localhost:8080/api/v1/';
      private tokenSubject = new BehaviorSubject<string>('');
      public token$ = this.tokenSubject.asObservable();
 
@@ -27,11 +27,14 @@ export class AuthService {
   }
 
   registerUser(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/register`, data);
+    return this.http.post(`${this.apiUrl}auth/register`, data);
   }
 
   loginUser(data: any): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, data);
+    return this.http.post(`${this.apiUrl}auth/login`, data);
+  }
+  oAuth2LoginUser(): Observable<any> {
+    return this.http.get(`${this.apiUrl}oauth2/login`);
   }
   setToken(token: string ){
     localStorage.setItem('token', token)

@@ -45,4 +45,8 @@ async handleLogin(event: Event){
     })
   })
 }
+async handleOAuth2Login(event: Event){
+  event.preventDefault()
+   window.location.href = 'http://localhost:8080/api/v1/oauth2/login'
+}
 }

@@ -2,6 +2,7 @@ package com.tasklist.api.service;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,6 +24,7 @@ public class TaskService {
     public TaskService(TaskRepository taskRepository, TaskUserRepository taskUserRepository) {
         this.taskRepository = taskRepository;
         this.taskUserRepository = taskUserRepository;
+
     }
 
     public void saveTask(TaskRequestDto dto) {
@@ -49,5 +51,9 @@ public class TaskService {
 
     public List<TaskResponseDto> listAllByTaskStatus(TaskStatus taskStatus, String userId) {
         return taskRepository.findAllByTaskStatusAndUserId(taskStatus, userId).stream().map(Task::toDto).toList();
+    }
+
+    public Map<TaskStatus, Long> countTasksByStatus(String userId) {
+        return taskRepository.countTasksByStatus(userId);
     }
 }

@@ -4,6 +4,7 @@ import { Layout } from './layouts/layout/layout';
 import { Dashboard } from './features/dashboard/dashboard';
 import { Register } from './features/auth/register/register';
 import { TaskList } from './features/task-list/task-list';
+import { Oauth2Redirect } from './features/auth/oauth2-redirect/oauth2-redirect';
 
 export const routes: Routes = [
   {
@@ -18,6 +19,10 @@ export const routes: Routes = [
   {
     path:'register',
     component:Register
+  },
+  {
+    path:'oauth2/redirect',
+    component:Oauth2Redirect
   },
   {
     path:'',

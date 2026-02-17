@@ -47,9 +47,7 @@ public class UserAuthService implements UserDetailsService {
 
     }
 
-    public Map<String, String> oAuth2Login(OAuth2AuthenticationToken auth2Token) {
-        Map<String, String> response = new HashMap<>();
-
+    public String oAuth2Login(OAuth2AuthenticationToken auth2Token) {
         String email = auth2Token.getPrincipal().getAttribute("email");
         String name = auth2Token.getPrincipal().getAttribute("name");
         TaskUser user = taskUserRepository.findByEmail(email).orElse(null);
@@ -57,8 +55,7 @@ public class UserAuthService implements UserDetailsService {
             user = new TaskUser(null, email, null, name, null);
             taskUserRepository.save(user);
         }
-        response.put("token", jwtUtil.generateToken(user));
-        return response;
+        return jwtUtil.generateToken(user);
 
     }
 
