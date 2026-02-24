@@ -26,7 +26,7 @@ Aplicação full stack para gerenciamento de tarefas com autenticação JWT/OAut
 
 ## Visao geral
 
-O projeto e dividido em dois aplicativos:
+O projeto é dividido em dois aplicativos:
 
 - `taskListApi`: backend REST com Spring Boot + MongoDB.
 - `tasklist`: frontend SPA com Angular.
@@ -261,7 +261,7 @@ O interceptor adiciona automaticamente o header `Authorization: Bearer <token>` 
    - `npm start`
 4. Acesse `http://localhost:4200`.
 
-## Observacoes
+## Observações
 
 - O projeto usa OAuth2 com Google; para uso em outro ambiente, configure client ID/secret próprios.
 - Há segredos no arquivo de configuracao de desenvolvimento; ideal mover para variaveis de ambiente.
