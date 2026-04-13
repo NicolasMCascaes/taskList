@@ -9,6 +9,7 @@ on:
       - main
     paths:
       - 'taskListApi/**'
+      - '.github/workflows/**'
   workflow_dispatch:
 
 jobs:
@@ -27,13 +28,13 @@ jobs:
           distribution: 'microsoft'
 
       - name: Build with Maven
-        run: mvn clean install
+        run: mvn -f taskListApi/pom.xml clean install
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v4
         with:
           name: java-app
-          path: '${{ github.workspace }}/target/*.jar'
+          path: 'taskListApi/target/*.jar'
 
   deploy:
     runs-on: ubuntu-latest
@@ -44,7 +45,7 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: java-app
-          
+          path: 'taskListApi/target/*.jar'
       
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
@@ -52,5 +53,5 @@ jobs:
         with:
           app-name: 'task-list-api'
           slot-name: 'Production'
-          package: '*.jar'
+          package: 'taskListApi/target/*.jar'
           publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_CABA3FB706FD4260B7517546F1DF1700 }}
